@@ -7,7 +7,7 @@ defmodule Exredis.Api.Helper do
   end
 
   defmacro defredis(cmd, args, fun \\ nil) do
-    margs = Enum.map args, fn(x) -> {x, [], ExRedis.Api.Helper} end
+    margs = Enum.map args, fn(x) -> {x, [], Exredis.Api.Helper} end
     quote do
       def unquote(cmd)(client, unquote_splicing(margs)) do
         method = String.upcase atom_to_binary unquote(cmd)
